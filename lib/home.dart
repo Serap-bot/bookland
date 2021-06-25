@@ -1,7 +1,12 @@
-import 'package:bookland/menuIconSayfasi.dart';
+import 'package:bookland/pages/okunacak.dart';
+import 'package:bookland/pages/okunacaklar_listesi.dart';
+import 'package:bookland/sabitler.dart';
 import 'package:flutter/material.dart';
+import 'package:bookland/menuIconSayfasi.dart';
 import 'package:bookland/kategoriler.dart';
 import 'package:bookland/etiket.dart';
+
+import 'favoriKitap.dart';
 
 class HomePage extends StatefulWidget {
   final kullaniciAdi;
@@ -22,47 +27,41 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.symmetric(horizontal: 17.0),
               child: ListView(
                 children: <Widget>[
-                  buildBaslik(),
-                  Text(widget.kullaniciAdi == null
-                      ? "Kullanici Girilmedi"
-                      : widget.kullaniciAdi),
+                  bookland(),
+                  Text(
+                      widget.kullaniciAdi == null
+                          ? "Kullanici Yok"
+                          : widget.kullaniciAdi,
+                      style: TextStyle(color: Colors.brown)),
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 161, vertical: 40),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+                    child: Column(
                       children: <Widget>[
-                        buildNavigation(
-                            text: 'Kategoriler',
-                            resimUrl: 'assets/images/kategoriler.jpeg',
+                        girisKitaplar(
+                            kategoriButon: 'KATEGORİLER',
+                            resimUrl: 'assets/images/kategoriler1.jpg',
                             widget: kategori(),
                             context: context),
                       ],
                     ),
                   ),
-                  SizedBox(height: 60),
+                  SizedBox(height: 25),
                   Center(
-                    child: Text(
-                      'Yeniler',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Colors.brown),
-                    ),
+                    child: Text('Yeniler', style: kMetinStili),
                   ),
                   SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       vitrindekiler(
-                        text: 'Devlet',
+                        yeni: 'Yeni',
+                        kitapAdi: 'Devlet',
                         photoUrl: 'assets/images/devlet.jpg',
-                        yeniyadaindirimli: 'Yeni',
                       ),
                       vitrindekiler(
-                        text: 'Sapiens',
+                        yeni: 'Yeni',
+                        kitapAdi: 'Sapiens',
                         photoUrl: 'assets/images/sapiens.jpg',
-                        yeniyadaindirimli: 'Yeni',
                       ),
                     ],
                   ),
@@ -70,21 +69,85 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       vitrindekiler(
-                        text: 'Bozkırkurdu',
+                        yeni: 'Yeni',
+                        kitapAdi: 'Bozkırkurdu',
                         photoUrl: 'assets/images/bozkırkurdu.jpg',
-                        yeniyadaindirimli: '-%15',
                       ),
                       vitrindekiler(
-                        text: 'Savaş Sanatı',
+                        yeni: 'Yeni',
+                        kitapAdi: 'Savaş Sanatı',
                         photoUrl: 'assets/images/savassanati.jpg',
-                        yeniyadaindirimli: '-%10',
                       ),
                     ],
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Okunacak();
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 90,
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: Colors.brown,
+                      ),
+                      child: Text(
+                        'Okunacaklar',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return favoriKitap();
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 90,
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: Colors.brown,
+                      ),
+                      child: Text(
+                        'Kütüphanem',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 95,
                   ),
                 ],
               ),
             ),
-            menuIconSayfasi('menu'),
+            menuIconSayfasi("giris"),
           ],
         ),
       ),
@@ -92,22 +155,22 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget buildBaslik() {
+Widget bookland() {
   return Padding(
     padding: EdgeInsets.only(top: 24.0),
     child: Text(
       'Bookland',
       style: TextStyle(
         fontSize: 32,
-        color: Colors.black,
+        color: Colors.brown[800],
         fontWeight: FontWeight.bold,
       ),
     ),
   );
 }
 
-Widget buildNavigation(
-    {@required String text,
+Widget girisKitaplar(
+    {@required String kategoriButon,
     @required String resimUrl,
     Widget widget,
     BuildContext context}) {
@@ -126,45 +189,39 @@ Widget buildNavigation(
           decoration: BoxDecoration(shape: BoxShape.rectangle),
           child: Image.asset(
             resimUrl,
-            scale: 1.75,
+            scale: 1,
           ),
         ),
         SizedBox(height: 8),
-        Text(
-          text,
-          style: TextStyle(
-              color: Colors.brown, fontSize: 14, fontWeight: FontWeight.w500),
-        ),
+        Text(kategoriButon, style: kMetinStili),
       ],
     ),
   );
 }
 
-Widget vitrindekiler({
-  @required String text,
-  String photoUrl,
-  @required String yeniyadaindirimli,
-}) {
+Widget vitrindekiler(
+    {@required String photoUrl, @required String kitapAdi, String yeni}) {
   return Container(
-    padding: EdgeInsets.only(left: 12, top: 12, bottom: 21, right: 12),
+    padding: EdgeInsets.only(left: 12, top: 21, bottom: 21, right: 12),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        etiket(yeniyadaindirimli),
-        SizedBox(height: 22),
+        etiket(yeni),
+        SizedBox(height: 23),
         Center(
             child: Image.asset(
           photoUrl,
           scale: 2,
         )),
-        SizedBox(height: 22),
+        SizedBox(height: 23),
         Center(
           child: Text(
-            text,
+            kitapAdi,
             style: TextStyle(
-                fontSize: 18, color: Colors.black, fontStyle: FontStyle.italic),
+                fontSize: 18, color: Colors.brown, fontStyle: FontStyle.italic),
           ),
         ),
+        SizedBox(height: 43),
       ],
     ),
   );

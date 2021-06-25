@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1017556508488",
+    "project_id": "bookland-bd473",
+    "storage_bucket": "bookland-bd473.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017556508488:android:c1659185863c3835769d7d",
+        "android_client_info": {
+          "package_name": "com.example.bookland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017556508488-gmhfsqndqh0g8t2lcbu66e7rj3aia0qc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookland",
+            "certificate_hash": "f1425b147f8d64a211d4a848e7a1c6dec00d99fe"
+          }
+        },
+        {
+          "client_id": "1017556508488-4gcf58t7jqn4n4o1j0423ju3a1lt813m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiwBvS7SxqGQhmGZoOR6vy92NhkSa81M8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017556508488-4gcf58t7jqn4n4o1j0423ju3a1lt813m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

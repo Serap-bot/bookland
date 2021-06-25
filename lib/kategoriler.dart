@@ -1,3 +1,4 @@
+import 'package:bookland/sabitler.dart';
 import 'package:flutter/material.dart';
 import 'package:bookland/kategoriDetay.dart';
 import 'package:bookland/baslik.dart';
@@ -7,7 +8,16 @@ void main() {
   runApp(kategori());
 }
 
-final List<String> categories = [
+/*final Map<String,Kitap> kategorilerListesi = [
+  "TÜM KİTAPLAR":"tarihKitap",
+  "DÜNYA KLASİKLERİ":"dünyaKitap",
+  "FELSEFE":"felsefeKitap",
+  "TARİH":"tarihKitap",
+  "AKADEMİK":"akademikKitap",
+  "ŞİİR":"siirKitap"
+];
+*/
+final List<String> kategorilerListesi = [
   "TÜM KİTAPLAR",
   "DÜNYA KLASİKLERİ",
   "FELSEFE",
@@ -28,20 +38,20 @@ class kategori extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  baslik("Kategoriler", context),
+                  baslik("KATEGORİLER", context),
                   SizedBox(
-                    height: 16,
+                    height: 21,
                   ),
                   Expanded(
                       child: ListView(
-                    children: categories
+                    children: kategorilerListesi
                         .map((String title) => kategoriler(title, context))
                         .toList(),
                   ))
                 ],
               ),
             ),
-            menuIconSayfasi("menu"),
+            menuIconSayfasi("kategoriler"),
           ],
         ),
       ),
@@ -58,7 +68,7 @@ Widget kategoriler(String sayfabaslik, context) {
     },
     child: Container(
       margin: EdgeInsets.only(bottom: 16),
-      padding: EdgeInsets.all(24),
+      padding: EdgeInsets.all(20),
       width: double.infinity,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -69,8 +79,7 @@ Widget kategoriler(String sayfabaslik, context) {
       child: Center(
         child: Text(
           sayfabaslik,
-          style: TextStyle(
-              color: Colors.brown, fontSize: 18, fontWeight: FontWeight.w600),
+          style: kMetinStili,
         ),
       ),
     ),

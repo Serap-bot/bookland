@@ -11,32 +11,38 @@ class KategoriDetay extends StatelessWidget {
     {
       "isim": "Nitche Ağladıkça",
       "fotograf": "assets/images/nitche.jpg",
-      "yazar": 'Irvin D. Yalom'
+      "yazar": 'Irvin D. Yalom',
+      "onsoz": " s "
     },
     {
       "isim": "Yabancı",
       "fotograf": "assets/images/yabanci.jpg",
-      "yazar": "Albert Camus"
+      "yazar": "Albert Camus",
+      "onsoz": " s "
     },
     {
       "isim": "Böyle Buyurdu Zerdüşt",
       "fotograf": "assets/images/zerdüşt.jpg",
-      "yazar": "Friedrich Nitche"
+      "yazar": "Friedrich Nitche",
+      "onsoz": " s "
     },
     {
       "isim": "Sapiens",
       "fotograf": "assets/images/sapiens.jpg",
-      "yazar": "Yuval Noah Harrari"
+      "yazar": "Yuval Noah Harrari",
+      "onsoz": " s "
     },
     {
       "isim": "Bozkırkurdu",
       "fotograf": "assets/images/bozkırkurdu.jpg",
-      "yazar": "Herman Hesse"
+      "yazar": "Herman Hesse",
+      "onsoz": " s "
     },
     {
       "isim": "Savaş Sanatı",
       "fotograf": "assets/images/savassanati.jpg",
-      "yazar": "Sun Tzu"
+      "yazar": "Sun Tzu",
+      "onsoz": " s "
     }
   ];
 
@@ -65,6 +71,7 @@ class KategoriDetay extends StatelessWidget {
                             ayrintilar["isim"],
                             ayrintilar["fotograf"],
                             ayrintilar["yazar"],
+                            ayrintilar["önsöz"],
                             context);
                       }).toList(),
                     ),
@@ -72,7 +79,7 @@ class KategoriDetay extends StatelessWidget {
                 ],
               ),
             ),
-            menuIconSayfasi("menu"),
+            menuIconSayfasi("kategoriDetay"),
           ],
         ),
       ),
@@ -80,7 +87,8 @@ class KategoriDetay extends StatelessWidget {
   }
 }
 
-Widget katalog(String kitapadi, String fotografUrl, String yazar, context) {
+Widget katalog(
+    String kitapadi, String fotografUrl, String yazar, String onsoz, context) {
   return GestureDetector(
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -109,7 +117,7 @@ Widget katalog(String kitapadi, String fotografUrl, String yazar, context) {
             scale: 5,
           ),
           SizedBox(
-            height: 32,
+            height: 16,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +133,7 @@ Widget katalog(String kitapadi, String fotografUrl, String yazar, context) {
                 yazar,
                 style: TextStyle(
                     color: Colors.brown,
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500),
               ),
             ],

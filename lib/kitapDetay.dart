@@ -59,7 +59,7 @@ class _kitapDetayState extends State<kitapDetay> {
                 ],
               ),
             ),
-            menuIconSayfasi("menu"),
+            menuIconSayfasi("kitapDetay"),
           ],
         ),
       ),

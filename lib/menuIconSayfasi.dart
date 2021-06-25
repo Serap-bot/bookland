@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 
 Widget menuIconSayfasi(String page) {
   return Align(
-    alignment: Alignment.bottomCenter,
+    alignment: Alignment.bottomRight,
     child: Container(
       decoration: BoxDecoration(
         boxShadow: [
-          BoxShadow(
-              offset: Offset(0, -3),
-              color: Colors.black.withOpacity(0.25),
-              blurRadius: 10)
+          BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 10)
         ],
         color: Colors.white,
       ),
@@ -20,11 +17,11 @@ Widget menuIconSayfasi(String page) {
         children: [
           menuIcon(
               iconData: Icons.sensor_door_outlined, active: page == "giris"),
-          menuIcon(iconData: Icons.list, active: page == "liste"),
+          menuIcon(iconData: Icons.list, active: page == "kategoriler"),
           menuIcon(
               iconData: Icons.featured_play_list_outlined,
-              active: page == "detay"),
-          menuIcon(iconData: Icons.label, active: page == "etiket")
+              active: page == "kategoriDetay"),
+          menuIcon(iconData: Icons.label, active: page == "kitapDetay")
         ],
       ),
     ),
